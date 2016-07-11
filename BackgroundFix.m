@@ -1,8 +1,11 @@
 %引导图像
-[image,map] = imread('古诗四首.jpg');
+image = imread('古诗四首.jpg');
 translate = makecform('srgb2lab'); 
 imageLab = applycform(image,translate);
 L = image(:,:,1);
+
+%使用knn matting进行图像分割
+knn_matting(image)
 
 %----------------------提取印章--------------------
 % %印章的输入图像

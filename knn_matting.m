@@ -1,11 +1,11 @@
-%function knn_matting(image)
+function knn_matting(image)
     run('vlfeat-0.9.20/toolbox/vl_setup');
     lambda=100;
     level=0.5;%0.5-3
     l=1;
     
-  [filename,imdir]=uigetfile('*.BMP; *.JPG; *.PGN; *.TIF'); 
-  image=imread(strcat(imdir,filename));
+%   [filename,imdir]=uigetfile('*.BMP; *.JPG; *.PGN; *.TIF'); 
+%   image=imread(strcat(imdir,filename));
 
     im = double(image)/255;
     [m, n, d]=size(im);
@@ -31,7 +31,7 @@
     end
     figure('name','Left click on each layer and press Enter to terminate(Press Space to seperate layers)'),imagesc(avg);
     [x,y,BUTTON]=ginput;
-    imwrite(min(max(avg,0),1),'avg.bmp','bmp');
+    %imwrite(min(max(avg,0),1),'avg.bmp','bmp');
     a=round(y);
     b=round(x);
     map=zeros(m*n,1);
@@ -47,7 +47,7 @@
         end
     end
     imagesc(avg);
-    imwrite(avg,'input.png','png');
+    %imwrite(avg,'input.png','png');
     tot=0;
     alpha=zeros(n*m,num);
     M=D-A+lambda*spdiags(map(:),0,m*n,m*n);
@@ -67,5 +67,5 @@
         imagesc(min(max(reshape(alpha(:,tot),m,n),0),1));
         imwrite(min(max(reshape(alpha(:,tot),m,n),0),1),sprintf('%02d.png',tot),'png');
     end
-%end
+end
 
