@@ -10,3 +10,7 @@ This is a matlab code to fix the bachground of Chinesecalligraphy.
 4. 利用K近邻抠图算法，分割书法作品的背景与文字、印章，得到文字和印章信息；
 
 5. 对步骤三中新的背景图像和步骤四中文字、印章信息进行像素级的图像融合，完成。
+
+# v0.2
+1. 加入vlfeat-0.9.20工具箱
+2. knnmatting加入主程序，不需要另外运行knn mating获取三个图层
